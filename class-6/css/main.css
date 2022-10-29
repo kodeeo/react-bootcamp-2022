@@ -1,0 +1,21 @@
+.nav-item {
+  background: red;
+}
+.nav-item li {
+  background: blue;
+  margin: 16px 0;
+}
+.nav-item li:hover {
+  background: blue;
+}
+.nav-item li a {
+  text-decoration: none;
+  color: #17181A;
+}
+main aside h1 {
+  color: #17181A;
+}
+main .info-text {
+  color: #5F5F64;
+  margin: 24px;
+}

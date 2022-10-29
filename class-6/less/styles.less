@@ -1,0 +1,35 @@
+@deep-black: #17181A;
+@light-black: #5F5F64;
+@margin-size: 16px;
+
+.nav-item {
+    background: red;
+
+    li {
+        background: blue;
+        margin: @margin-size 0;
+
+        &:hover {
+            background: blue;
+        }
+
+        a {
+            text-decoration: none;
+            color: @deep-black
+        }
+    }
+}
+
+
+main {
+    aside {
+        h1 {
+            color: @deep-black
+        }
+    }
+
+    .info-text {
+        color: @light-black;
+        margin: @margin-size + 8px
+    }
+}
