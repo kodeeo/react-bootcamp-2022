@@ -28,3 +28,12 @@ if(area == 'Dhaka') {
 } else {
     console.log('চান্দের দেশে থাকি।')
 }
+
+var a = 10, b = 20, total;
+var operation = 'sum'
+
+if(operation === 'sum') {
+    total = a + b;
+}
+
+console.log(total)
