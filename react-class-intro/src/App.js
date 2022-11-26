@@ -2,18 +2,43 @@ import Header from './components/Header/index.js';
 import './App.css';
 
 function App() {
+  const name = "Zahidul Hossain";
+  const users = [
+    {
+      id: 1,
+      name: "Kawser"
+    },
+    {
+      id: 2,
+      name: "Arshad"
+    },
+    {
+      id: 3,
+      name: 'Emon'
+    }
+  ]
+
+  function add(x,y) {
+    return x + y
+  }
+
+  function clickAgain(x, y) {
+    alert(`Hello Click Again ${add(x, y)}`)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
+        <h1> {name} </h1>
 
-        <Header />
-        <h1>Hello World</h1>
-        <ul> 
-          <li>Local Web Server</li>
-          <li>Live Reloading</li>
-          <li>CSS Live Reloading</li>
-          <li>Javascript, CSS Bundling</li>
+        <ul>
+          {
+            users.map((user) => (
+              <li>{user.name}</li>
+            ))
+          }
         </ul>
+
       </header>
     </div>
   );
