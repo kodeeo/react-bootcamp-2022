@@ -1,8 +1,14 @@
-import Header from './components/Header/index.js';
 import './App.css';
+
+function Header() {
+  return (
+    <h1>This is a Header</h1>
+  )
+}
 
 function App() {
   const name = "Zahidul Hossain";
+
   const users = [
     {
       id: 1,
@@ -30,6 +36,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1> {name} </h1>
+
+        <Header />
 
         <ul>
           {
