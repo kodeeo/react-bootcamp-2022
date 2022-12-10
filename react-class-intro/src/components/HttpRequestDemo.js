@@ -5,8 +5,10 @@ import axios from "axios"
 export default function HttpRequestDemo() {
     const [surahs, setSurahs] = useState([]);
     const [selectedSurah, setSelectedSurah] = useState(null);
-    // const [audioList, setAudioList] = useState([])
-    const [audioFile, setAudioFile] = useState(null);
+    const [audioList, setAudioList] = useState([])
+
+    // Data Persistency
+    const [audioFile, setAudioFile] = useState(JSON.parse(localStorage.getItem('AUDIO_FILE')) ?? null);
 
     const changeSelectedSurah = (id) => {
         setSelectedSurah(id)
@@ -21,14 +23,15 @@ export default function HttpRequestDemo() {
 
     useEffect(() => {
         if(selectedSurah) {
-            axios.get(`https://api.quran.com/api/v4/chapter_recitations/2/${selectedSurah}`)
-            .then(data => {
-                setAudioFile(data.data.audio_file)
-            })
-            // axios.get(`https://api.quran.com/api/v4/recitations/7/by_chapter/${selectedSurah}?per_page=400`)
-            //     .then((data) => {
-            //         setAudioList(data.data.audio_files)
-            //     })
+            // axios.get(`https://api.quran.com/api/v4/chapter_recitations/2/${selectedSurah}`)
+            // .then(data => {
+            //     localStorage.setItem('AUDIO_FILE', JSON.stringify(data.data.audio_file))
+            //     setAudioFile(data.data.audio_file)
+            // })
+            axios.get(`https://api.quran.com/api/v4/recitations/7/by_chapter/${selectedSurah}?per_page=400`)
+                .then((data) => {
+                    setAudioList(data.data.audio_files)
+                })
         }
     }, [selectedSurah])
 
@@ -36,7 +39,7 @@ export default function HttpRequestDemo() {
     // JavaScript Promise => Asynchronous operation
 
     return (
-        <div >
+        <div>
             <h1 className="font-bold text-2xl text-lime-800">HTTP Request Demo</h1>
 
             <div className="container flex">
@@ -44,7 +47,7 @@ export default function HttpRequestDemo() {
                     <ul>
                         {
                             surahs.map(surah => (
-                                <li key={surah.id} onClick={() => changeSelectedSurah(surah.id)} className="cursor-pointer my-8">
+                                <li key={surah.id} onClick={() => changeSelectedSurah(surah.id)} className="cursor-pointer my-8 hover:text-green-600 hover:font-bold">
                                     <em>{surah.name_arabic}</em> {surah.name_simple} - <small>{surah.revelation_place}</small>
                                 </li>
                             ))
