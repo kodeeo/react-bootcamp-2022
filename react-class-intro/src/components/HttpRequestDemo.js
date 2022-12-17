@@ -24,7 +24,7 @@ export default function HttpRequestDemo() {
         //     .then(function(data){
         //         setSurahs(data.data.chapters)
         //     })
-        axios.get('https://api.quran.com/api/v4/verses/by_chapter/1?language=en&words=false&translations=161&audio=7&tafsirs=true&fields=text_uthmani,verse_number,image_url&page=1&per_page=400')
+        axios.get('https://api.quran.com/api/v4/verses/by_chapter/2?language=en&words=false&translations=161&audio=7&tafsirs=true&fields=text_uthmani,verse_number,image_url&page=1&per_page=400')
             .then(function(data){
                 setSurahFull(data.data.verses)
             })

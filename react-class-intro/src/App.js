@@ -56,13 +56,31 @@ export default function App() {
     <div>
       <nav>
         <ul className='flex w-full gap-8'>
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer' onClick={() => changeView('app-two')}>App Two</li>  
+          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
+            
+            <a href='http://localhost:3000/?component=app-two'>
+              App Two
+            </a>
+            
+          </li>  
 
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer' onClick={() => changeView('hooks-intro')}>Hooks Intro</li>  
+          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
+            <a href='http://localhost:3000/?component=hooks-intro'>
 
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer' onClick={() => changeView('use-demo')}>UseEffect Demo</li>  
+            Hooks Intro
+            </a>
+          </li>  
 
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer' onClick={() => changeView('http-demo')}>HTTP Request Demo</li>  
+          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>UseEffect Demo</li>  
+
+          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
+            
+          <a href='http://localhost:3000/?component=http-demo'>
+            HTTP Request Demo
+            
+            </a>
+          </li>  
+
 
         </ul>  
       </nav>  
