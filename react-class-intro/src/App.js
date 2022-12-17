@@ -1,94 +1,36 @@
-import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import AppTwo from './AppTwo';
 import HooksIntro from './HooksIntro';
 import UseEffectDemo from './components/Header/UseEffectDemo';
 import HttpRequestDemo from './components/HttpRequestDemo';
-
-
-function CompView({ view }) {
-  if(view === 'use-demo') {
-    return (
-      <UseEffectDemo />
-    )
-  }
-  else if(view === 'hooks-intro') {
-    return (
-      <HooksIntro />
-    )
-  }
-  else if(view === 'http-demo') {
-    return (
-      <HttpRequestDemo/>
-    )
-  }
-  return (
-    <AppTwo />
-  )
-  // return (
-  //   <div>
-  //     Comp View Component {view}
-  //   </div>
-  // )
-}
-
-
-function getUrlParam() {
-  //http://localhost:3000/?component=hooks-intro
-  let params = (new URL(document.location)).searchParams;
-  let compName = params.get("component");
-  return compName
-}
+import Layout from './components/Layout';
 
 export default function App() {
-  const [view, setView] = useState('app-two')
 
-  const changeView = (viewName) => {
-    setView(viewName)
-  }
-
-  useEffect(() => {
-    const param = getUrlParam()
-    setView(param)
-    // console.log(getUrlParam())
-  }, [])
 
   return(
     <div>
-      <nav>
-        <ul className='flex w-full gap-8'>
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
-            
-            <a href='http://localhost:3000/?component=app-two'>
-              App Two
-            </a>
-            
-          </li>  
 
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
-            <a href='http://localhost:3000/?component=hooks-intro'>
-
-            Hooks Intro
-            </a>
-          </li>  
-
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>UseEffect Demo</li>  
-
-          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
-            
-          <a href='http://localhost:3000/?component=http-demo'>
-            HTTP Request Demo
-            
-            </a>
-          </li>  
-
-
-        </ul>  
-      </nav>  
+      <h1>React Router Dom Demo</h1>
       
+      <Routes>
 
-      <div className='wrapper'>
-        <CompView view={view} count={0} />
-      </div>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<AppTwo />} />
+
+          <Route path='app-two' element={<AppTwo />} />
+
+          <Route path='use-demo' element={<UseEffectDemo />} />
+
+          <Route path='hooks-intro' element={<HooksIntro />} />
+
+          <Route path='http-demo' element={<HttpRequestDemo />} />
+
+
+        </Route>
+
+      </Routes>
+
     </div>
   )
 }
