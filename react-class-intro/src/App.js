@@ -4,6 +4,7 @@ import HooksIntro from './HooksIntro';
 import UseEffectDemo from './components/Header/UseEffectDemo';
 import HttpRequestDemo from './components/HttpRequestDemo';
 import Layout from './components/Layout';
+import ContactForm from './components/ContactForm';
 
 export default function App() {
 
@@ -12,7 +13,7 @@ export default function App() {
     <div>
 
       <h1>React Router Dom Demo</h1>
-      
+
       <Routes>
 
         <Route path='/' element={<Layout />}>
@@ -26,6 +27,7 @@ export default function App() {
 
           <Route path='http-demo' element={<HttpRequestDemo />} />
 
+          <Route path='contact-form' element={<ContactForm />} />
 
         </Route>
 

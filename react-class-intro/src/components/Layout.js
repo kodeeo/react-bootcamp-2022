@@ -6,38 +6,42 @@ export default function Layout() {
         <nav>
         <ul className='flex w-full gap-8'>
           <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
-            
+
             <Link to='app-two'>
               App Two
             </Link>
-            
-          </li>  
+
+          </li>
 
           <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
             <Link to='hooks-intro'>
 
             Hooks Intro
             </Link>
-          </li>  
+          </li>
 
           <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
             <Link to='use-demo'>
               UseEffect Demo
-            </Link>  
-          </li>  
+            </Link>
+          </li>
 
           <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
-            
-          <Link to='http-demo'>
-            HTTP Request Demo
-            
+            <Link to='http-demo'>
+              HTTP Request Demo
             </Link>
-          </li>  
+          </li>
+
+          <li className='bg-blue-200 py-2 px-6 cursor-pointer'>
+            <Link to='contact-form'>
+              Contact Form
+            </Link>
+          </li>
 
 
-        </ul>  
-      </nav>  
-      
+        </ul>
+      </nav>
+
 
       <div className='wrapper'>
         <Outlet />
