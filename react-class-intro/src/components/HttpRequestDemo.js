@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import SurahList from "./SurahList";
 
 const ConvertToArabicNumbers = (num) => {
   const arabicNumbers = '\u0660\u0661\u0662\u0663\u0664\u0665\u0666\u0667\u0668\u0669';
@@ -8,7 +9,7 @@ const ConvertToArabicNumbers = (num) => {
 
 export default function HttpRequestDemo() {
     const [surahs, setSurahs] = useState([]);
-    const [selectedSurah, setSelectedSurah] = useState(null);
+    const [selectedSurah, setSelectedSurah] = useState(1);
     const [audioList, setAudioList] = useState([])
     const [surahFull, setSurahFull] = useState([])
 
@@ -20,15 +21,18 @@ export default function HttpRequestDemo() {
     }
 
     useEffect(() => {
-        // axios.get('https://api.quran.com/api/v4/chapters?language=en')
-        //     .then(function(data){
-        //         setSurahs(data.data.chapters)
-        //     })
-        axios.get('https://api.quran.com/api/v4/verses/by_chapter/2?language=en&words=false&translations=161&audio=7&tafsirs=true&fields=text_uthmani,verse_number,image_url&page=1&per_page=400')
+        axios.get('https://api.quran.com/api/v4/chapters?language=en')
+            .then(function(data){
+                setSurahs(data.data.chapters)
+            })
+    }, [])
+
+    useEffect(() => {
+        axios.get(`https://api.quran.com/api/v4/verses/by_chapter/${selectedSurah}?language=en&words=false&translations=161&audio=7&tafsirs=true&fields=text_uthmani,verse_number,image_url&page=1&per_page=400`)
             .then(function(data){
                 setSurahFull(data.data.verses)
             })
-    }, [])
+    }, [selectedSurah])
 
     useEffect(() => {
         if(selectedSurah) {
@@ -37,10 +41,10 @@ export default function HttpRequestDemo() {
             //     localStorage.setItem('AUDIO_FILE', JSON.stringify(data.data.audio_file))
             //     setAudioFile(data.data.audio_file)
             // })
-            axios.get(`https://api.quran.com/api/v4/recitations/7/by_chapter/${selectedSurah}?per_page=400`)
-                .then((data) => {
-                    setAudioList(data.data.audio_files)
-                })
+            // axios.get(`https://api.quran.com/api/v4/recitations/7/by_chapter/${selectedSurah}?per_page=400`)
+            //     .then((data) => {
+            //         setAudioList(data.data.audio_files)
+            //     })
         }
     }, [selectedSurah])
 
@@ -49,10 +53,9 @@ export default function HttpRequestDemo() {
 
     return (
         <div>
-            <h1 className="font-bold text-2xl text-lime-800">HTTP Request Demo</h1>
-
             <div className="container flex">
                 <div className="w-1/5">
+                    {/* <SurahList /> */}
                     <ul>
                         {
                             surahs.map(surah => (
